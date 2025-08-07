@@ -9,14 +9,12 @@ import { auth } from "./src/utils/auth";
 // initialize express app
 const app = express();
 
-
 // middleware setup
 app.use(cors());
 app.use(morgan("dev"));
 
 // Auth routes first
-app.all('/api/auth/{*any}', toNodeHandler(auth));
-
+app.all("/api/auth/{*any}", toNodeHandler(auth));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
