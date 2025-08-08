@@ -5,6 +5,7 @@ import config from "./src/config/config";
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./src/utils/auth";
 //  import routes
+import postRoutes from "./routes/postRoutes";
 
 // initialize express app
 const app = express();
@@ -36,7 +37,7 @@ app.get("/api/health", (req, res) => {
 });
 
 // routes
-
+app.use("/api", postRoutes);
 // fallback route for handling unknown routes
 app.use((req, res) => {
   res.status(404).json({
