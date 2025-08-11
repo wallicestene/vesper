@@ -1,4 +1,3 @@
-import { error } from "console";
 import prisma from "../src/prisma";
 import { Request, Response, NextFunction } from "express";
 
@@ -29,7 +28,7 @@ export const requireAuth = async (
     if (!session || new Date() > session.expiresAt) {
       return res.status(401).json({ error: "Invalid or expired token" });
     }
-    // Attach the user to request
+    // Attaching the user to request
     req.user = session.user;
     next();
   } catch (error) {
