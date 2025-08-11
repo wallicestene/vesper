@@ -28,13 +28,14 @@ export const createPost = async (req: Request, res: Response) => {
     // get user from request
     const { id } = req.user;
 
-    // Validate required fields
+    // Validate required fields 
     if (!id || !content || !scheduledAt) {
       return res.status(400).json({
         error:
           "Missing required fields: userId, content and scheduledAt are required.",
       });
     }
+
 
     const post = await prisma.post.create({
       data: {
@@ -51,3 +52,4 @@ export const createPost = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Failed to create post" });
   }
 };
+// get a single post by ID
