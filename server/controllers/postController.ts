@@ -27,6 +27,7 @@ export const createPost = async (req: Request, res: Response) => {
 
     // get user from request
     const { id } = req.user;
+
     // Validate required fields
     if (!id || !content || !scheduledAt) {
       return res.status(400).json({
