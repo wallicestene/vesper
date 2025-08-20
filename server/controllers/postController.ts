@@ -28,14 +28,13 @@ export const createPost = async (req: Request, res: Response) => {
     // get user from request
     const { id } = req.user;
 
-    // Validate required fields 
+    // Validate required fields
     if (!id || !content || !scheduledAt) {
       return res.status(400).json({
         error:
           "Missing required fields: userId, content and scheduledAt are required.",
       });
     }
-
 
     const post = await prisma.post.create({
       data: {
@@ -53,3 +52,21 @@ export const createPost = async (req: Request, res: Response) => {
   }
 };
 // get a single post by ID
+export const getPostById = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const post = await prisma.post.findUnique({
+      where: {
+        id,
+      },
+    });
+    if (!post) {
+      res.status(404).json({ error: "No post found with that Id!" });
+    } else {
+      res.status(200).json(post);
+    }
+  } catch (error) {
+    console.log("Error fetching post:", error);
+    res.status(500).json({ error: "Failed to fetch post" });
+  }
+};
