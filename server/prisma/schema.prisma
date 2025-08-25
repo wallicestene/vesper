@@ -35,6 +35,7 @@ model Post {
   mediaUrl    String
   scheduledAt DateTime
   status      String     @default("scheduled") // scheduled | published
+  platforms   String[]
   analytics   Analytics?
   createdAt   DateTime   @default(now())
 }

@@ -19,11 +19,18 @@ interface CreatePostBody {
   mediaUrl: string;
   scheduledAt: Date;
   status?: string; // default to "scheduled" if not provided
+  platforms?: string[];
 }
 
 export const createPost = async (req: Request, res: Response) => {
   try {
-    const { content, mediaUrl, scheduledAt, status }: CreatePostBody = req.body;
+    const {
+      content,
+      mediaUrl,
+      scheduledAt,
+      status,
+      platforms,
+    }: CreatePostBody = req.body;
 
     // get user from request
     const { id } = req.user;
@@ -43,6 +50,7 @@ export const createPost = async (req: Request, res: Response) => {
         mediaUrl,
         scheduledAt,
         status,
+        platforms,
       },
     });
     res.status(200).json(post);

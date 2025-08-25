@@ -6,6 +6,7 @@ import { toNodeHandler } from "better-auth/node";
 import { auth } from "./src/utils/auth";
 //  import routes
 import postRoutes from "./routes/postRoutes";
+import publishPostJob from "./controllers/schedulerService";
 
 // initialize express app
 const app = express();
@@ -46,6 +47,8 @@ app.use((req, res) => {
   });
 });
 
+// Start the cron job
+publishPostJob();
 app.listen(config.port, () => {
   console.log(`Server is running on port ${config.port}`);
   console.log(
