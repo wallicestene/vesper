@@ -15,5 +15,8 @@ export const getAnalytics = async (req: Request, res: Response) => {
       scheduledPosts,
       publishedPosts,
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log("Error fetching analytics:", error);
+    res.status(500).json({ error: "Failed to fetch analytics" });
+  }
 };

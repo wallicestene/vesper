@@ -1,7 +1,8 @@
 import cron from "node-cron";
 import prisma from "../src/prisma";
+import { promise } from "better-auth/*";
 
-const publishPostJob = () => {
+export const publishPostJob = () => {
   cron.schedule("* * * * *", async () => {
     try {
       const posts = await prisma.post.findMany({
@@ -26,5 +27,45 @@ const publishPostJob = () => {
     }
   });
 };
+// analytics simulation such as likes and comments
+export const simulateAnalytics = async () => {
+  cron.schedule("* * * * *", async () => {
+    try {
+      const publishedPosts = await prisma.post.findMany({
+        where: {
+          status: "published",
+        },
+        include: { analytics: true },
+      });
+      await Promise.all(
+        publishedPosts.map(async (post) => {
+          const likesIncrement = Math.floor(Math.random() * 10);
+          const commentsIncrement = Math.floor(Math.random() * 3);
 
-export default publishPostJob;
+          if (post.analytics) {
+            await prisma.analytics.update({
+              where: {
+                id: post.analytics.id,
+              },
+              data: {
+                likes: (post.analytics.likes += likesIncrement),
+                comments: (post.analytics.comments += commentsIncrement),
+              },
+            });
+          } else {
+            await prisma.analytics.create({
+              data: {
+                postId: post.id,
+                likes: likesIncrement,
+                comments: commentsIncrement,
+              },
+            });
+          }
+        })
+      );
+      console.log("Simulated analytics data for published posts");
+    } catch (error) {
+      console.error("Error in simulateAnalytics:", error);
+    }
+  });
+};
