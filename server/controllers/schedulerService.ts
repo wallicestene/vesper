@@ -48,8 +48,8 @@ export const simulateAnalytics = async () => {
                 id: post.analytics.id,
               },
               data: {
-                likes: (post.analytics.likes += likesIncrement),
-                comments: (post.analytics.comments += commentsIncrement),
+                likes: post.analytics.likes + likesIncrement,
+                comments: post.analytics.comments + commentsIncrement,
               },
             });
           } else {
