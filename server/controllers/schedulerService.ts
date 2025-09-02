@@ -29,7 +29,7 @@ export const publishPostJob = () => {
 };
 // analytics simulation such as likes and comments
 export const simulateAnalytics = async () => {
-  cron.schedule("* * * * *", async () => {
+  cron.schedule("*/5 * * * *", async () => {
     try {
       const publishedPosts = await prisma.post.findMany({
         where: {
