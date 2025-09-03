@@ -1,10 +1,20 @@
 "use client";
 
 import Link from "next/link";
-
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+import NavMenu from "./NavMenu";
 function Navbar() {
   return (
-    <nav className="flex justify-between items-center px-6 py-3 bg-white border-b border-primary-200 font-sans">
+    <nav className="flex justify-between items-center px-6 py-3 bg-white font-sans">
       {/* Logo */}
       <div className="nav-left">
         <Link
@@ -16,8 +26,8 @@ function Navbar() {
       </div>
 
       {/* Navigation Links */}
-      <div className="nav-center hidden md:block">
-        <ul className="flex space-x-1">
+      <div className="nav-center hidde md:block">
+        {/* <ul className="flex space-x-1">
           <li>
             <Link
               href="/features"
@@ -50,7 +60,8 @@ function Navbar() {
               Pricing
             </Link>
           </li>
-        </ul>
+        </ul> */}
+        <NavMenu/>
       </div>
 
       {/* Auth Buttons */}
@@ -70,7 +81,7 @@ function Navbar() {
       </div>
 
       {/* Mobile Menu Button */}
-      <div className="md:hidden">
+      {/* <div className="md:hidden">
         <button className="p-2 text-primary-700 hover:text-primary-800 hover:bg-primary-50 rounded-md transition-colors">
           <svg
             className="w-5 h-5"
@@ -86,7 +97,7 @@ function Navbar() {
             />
           </svg>
         </button>
-      </div>
+      </div> */}
     </nav>
   );
 }
