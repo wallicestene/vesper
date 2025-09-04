@@ -202,7 +202,7 @@ const NavMenu = () => {
 
         {/* Resources Menu */}
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-base font-medium text-primary-700 hover:text-primary-800 hover:rounded-full hover:bg-primary-50 data-[state=open]:bg-primary-50 data-[state=open]:text-primary-800">
+          <NavigationMenuTrigger className="text-base font-medium text-primary-700 hover:text-primary-800 hover:bg-primary-50 data-[state=open]:bg-primary-50 data-[state=open]:text-primary-800">
             Resources
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -226,7 +226,7 @@ const NavMenu = () => {
           <NavigationMenuLink asChild>
             <Link
               href="/pricing"
-              className="px-4 py-2 text-base hover:rounded-full font-medium text-primary-700 hover:text-primary-800 hover:bg-primary-50 transition-all duration-200"
+              className="px-4 py-2 text-base hover:rounded-full font-medium text-primary-700 hover:text-primary-800 hover:bg-primary-50 rounded-md transition-all duration-200"
             >
               Pricing
             </Link>
