@@ -34,13 +34,13 @@ function Navbar() {
       <div className="nav-right flex items-center space-x-3">
         <Link
           href="/signin"
-          className="px-4 py-2 text-sm  text-primary-700 hover:text-primary-800 transition-colors rounded-full border border-primary-500"
+          className="px-4 py-2 text-base text-primary-700 hover:text-primary-800 transition-colors rounded-full border border-primary-500"
         >
           Log in
         </Link>
         <Link
           href="/signup"
-          className="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white text-sm  rounded-full transition-all duration-200 shadow-sm hover:shadow-md"
+          className="px-4 py-2 text-base bg-primary-500 hover:bg-primary-600 text-white  rounded-full transition-all duration-200 shadow-sm hover:shadow-md"
         >
           Get Started
         </Link>

@@ -51,7 +51,7 @@ export default function Page() {
 
           {/* Middle container */}
           <div className="space-y-4">
-            <p className="text-xl md:text-2xl max-w-2xl mx-auto">
+            <p className="text-base max-w-2xl mx-auto">
               Your all-in-one social media management tool.
             </p>
           </div>
