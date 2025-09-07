@@ -1,4 +1,5 @@
 "use client";
+import { GridPattern } from "@/components/magicui/grid-pattern";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,6 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import z from "zod";
@@ -33,14 +35,25 @@ export default function Page() {
     // Handle form submission here
   }
   return (
-    <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+    <div className="">
       <Navbar />
       {/* Homepage hero section */}
-      <section className="hero min-h-screen flex flex-col justify-center items-center text-center px-6 py-20 relative z-10">
+      <section className="hero relative min-h-screen flex flex-col justify-center items-center text-center px-6 py-20 relative z-10">
+        <GridPattern
+          width={45}
+          height={50}
+          x={-1}
+          y={-1}
+          // strokeDasharray={"4 2"}
+          className={cn(
+            "[mask-image:radial-gradient(750px_circle_at_center,white,transparent)]",
+            "absolute inset-0 z-[-1]"
+          )}
+        />
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Top container */}
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+            <h1 className="text-5xl md:text-6xl font-bold">
               Welcome to <span className="">Vesper</span>
               <br />
               Your social media workspace
@@ -91,6 +104,11 @@ export default function Page() {
                 />
               </form>
             </Form>
+            <div>
+              <p className="text-xs text-gray-500 mt-2">
+                By entering your email, you agree to receive emails from Vesper.
+              </p>
+            </div>
           </div>
         </div>
       </section>
