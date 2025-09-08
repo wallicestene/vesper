@@ -2,7 +2,7 @@ import { Card } from "./ui/card";
 
 const MetricsContainer = () => {
   return (
-    <section className="w-full">
+    <section className="w-full py-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card className="bg-white shadow-none border-1 border-primary-200 rounded-xl p-8 text-center">
