@@ -110,41 +110,145 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Vibrant Blues */
+  --vibrant-blue-50: #eff6ff;
+  --vibrant-blue-100: #dbeafe;
+  --vibrant-blue-200: #bfdbfe;
+  --vibrant-blue-300: #93c5fd;
+  --vibrant-blue-400: #60a5fa;
+  --vibrant-blue-500: #3b82f6;
+  --vibrant-blue-600: #2563eb;
+  --vibrant-blue-700: #1d4ed8;
+  --vibrant-blue-800: #1e40af;
+  --vibrant-blue-900: #1e3a8a;
+
+  /* Vibrant Greens */
+  --vibrant-green-50: #f0fdf4;
+  --vibrant-green-100: #dcfce7;
+  --vibrant-green-200: #bbf7d0;
+  --vibrant-green-300: #86efac;
+  --vibrant-green-400: #4ade80;
+  --vibrant-green-500: #22c55e;
+  --vibrant-green-600: #16a34a;
+  --vibrant-green-700: #15803d;
+  --vibrant-green-800: #166534;
+  --vibrant-green-900: #14532d;
+
+  /* Vibrant Oranges */
+  --vibrant-orange-50: #fff7ed;
+  --vibrant-orange-100: #ffedd5;
+  --vibrant-orange-200: #fed7aa;
+  --vibrant-orange-300: #fdba74;
+  --vibrant-orange-400: #fb923c;
+  --vibrant-orange-500: #f97316;
+  --vibrant-orange-600: #ea580c;
+  --vibrant-orange-700: #c2410c;
+  --vibrant-orange-800: #9a3412;
+  --vibrant-orange-900: #7c2d12;
+
+  /* Vibrant Purples */
+  --vibrant-purple-50: #faf5ff;
+  --vibrant-purple-100: #f3e8ff;
+  --vibrant-purple-200: #e9d5ff;
+  --vibrant-purple-300: #d8b4fe;
+  --vibrant-purple-400: #c084fc;
+  --vibrant-purple-500: #a855f7;
+  --vibrant-purple-600: #9333ea;
+  --vibrant-purple-700: #7c3aed;
+  --vibrant-purple-800: #6b21a8;
+  --vibrant-purple-900: #581c87;
+
+  /* Vibrant Pinks */
+  --vibrant-pink-50: #fdf2f8;
+  --vibrant-pink-100: #fce7f3;
+  --vibrant-pink-200: #fbcfe8;
+  --vibrant-pink-300: #f9a8d4;
+  --vibrant-pink-400: #f472b6;
+  --vibrant-pink-500: #ec4899;
+  --vibrant-pink-600: #db2777;
+  --vibrant-pink-700: #be185d;
+  --vibrant-pink-800: #9d174d;
+  --vibrant-pink-900: #831843;
+
+  /* Vibrant Teals */
+  --vibrant-teal-50: #f0fdfa;
+  --vibrant-teal-100: #ccfbf1;
+  --vibrant-teal-200: #99f6e4;
+  --vibrant-teal-300: #5eead4;
+  --vibrant-teal-400: #2dd4bf;
+  --vibrant-teal-500: #14b8a6;
+  --vibrant-teal-600: #0d9488;
+  --vibrant-teal-700: #0f766e;
+  --vibrant-teal-800: #115e59;
+  --vibrant-teal-900: #134e4a;
+
+  /* Vibrant Yellows */
+  --vibrant-yellow-50: #fefce8;
+  --vibrant-yellow-100: #fef9c3;
+  --vibrant-yellow-200: #fef08a;
+  --vibrant-yellow-300: #fde047;
+  --vibrant-yellow-400: #facc15;
+  --vibrant-yellow-500: #eab308;
+  --vibrant-yellow-600: #ca8a04;
+  --vibrant-yellow-700: #a16207;
+  --vibrant-yellow-800: #854d0e;
+  --vibrant-yellow-900: #713f12;
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+/* Tailwind-compatible utility classes */
+.bg-vibrant-blue-500 { background-color: var(--vibrant-blue-500); }
+.bg-vibrant-green-500 { background-color: var(--vibrant-green-500); }
+.bg-vibrant-orange-500 { background-color: var(--vibrant-orange-500); }
+.bg-vibrant-purple-500 { background-color: var(--vibrant-purple-500); }
+.bg-vibrant-pink-500 { background-color: var(--vibrant-pink-500); }
+.bg-vibrant-teal-500 { background-color: var(--vibrant-teal-500); }
+.bg-vibrant-yellow-500 { background-color: var(--vibrant-yellow-500); }
+
+.text-vibrant-blue-600 { color: var(--vibrant-blue-600); }
+.text-vibrant-green-600 { color: var(--vibrant-green-600); }
+.text-vibrant-orange-600 { color: var(--vibrant-orange-600); }
+.text-vibrant-purple-600 { color: var(--vibrant-purple-600); }
+.text-vibrant-pink-600 { color: var(--vibrant-pink-600); }
+.text-vibrant-teal-600 { color: var(--vibrant-teal-600); }
+.text-vibrant-yellow-600 { color: var(--vibrant-yellow-600); }
+
+.border-vibrant-blue-200 { border-color: var(--vibrant-blue-200); }
+.border-vibrant-green-200 { border-color: var(--vibrant-green-200); }
+.border-vibrant-orange-200 { border-color: var(--vibrant-orange-200); }
+.border-vibrant-purple-200 { border-color: var(--vibrant-purple-200); }
+.border-vibrant-pink-200 { border-color: var(--vibrant-pink-200); }
+.border-vibrant-teal-200 { border-color: var(--vibrant-teal-200); }
+.border-vibrant-yellow-200 { border-color: var(--vibrant-yellow-200); }
+
+/* Gradient backgrounds inspired by Buffer */
+.bg-gradient-blue {
+  background: linear-gradient(135deg, var(--vibrant-blue-500), var(--vibrant-blue-600));
 }
+
+.bg-gradient-green {
+  background: linear-gradient(135deg, var(--vibrant-green-500), var(--vibrant-green-600));
+}
+
+.bg-gradient-orange {
+  background: linear-gradient(135deg, var(--vibrant-orange-500), var(--vibrant-orange-600));
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, var(--vibrant-purple-500), var(--vibrant-purple-600));
+}
+
+.bg-gradient-teal {
+  background: linear-gradient(135deg, var(--vibrant-teal-500), var(--vibrant-teal-600));
+}
+
+/* Social media platform colors (Buffer-inspired) */
+.social-facebook { background-color: #1877f2; }
+.social-twitter { background-color: #1da1f2; }
+.social-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.social-linkedin { background-color: #0077b5; }
+.social-youtube { background-color: #ff0000; }
+.social-tiktok { background-color: #000000; }
 
 @layer base {
   * {
