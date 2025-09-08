@@ -28,7 +28,7 @@ const FeaturesContainer = () => {
                 <p className="text-vibrant-blue-600 font-semibold text-sm uppercase tracking-wider">
                   Publish
                 </p>
-                <h2 className="text-3xl md:text-4xl font-bold text-primary-950 leading-tight">
+                <h2 className="text-3xl md:text-4xl font-semibold text-primary-950 leading-tight">
                   Schedule and Publish with Ease
                 </h2>
                 <p className="text-base md:text-lg text-primary-900 leading-relaxed">
