@@ -35,7 +35,9 @@ const HeroSection = () => {
   }
   return (
     /* Homepage hero section */
-    <section className="hero relative min-h-screen flex flex-col justify-center items-center text-center px-6 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10"> {/* Adjusted py for responsive padding */}
+    <section className="hero relative min-h-screen flex flex-col justify-center items-center text-center px-6 py-12 sm:py-16 md:py-20 lg:py-24 z-10">
+      {" "}
+      {/* Adjusted py for responsive padding */}
       <GridPattern
         width={45}
         height={50}
@@ -48,23 +50,27 @@ const HeroSection = () => {
           "absolute inset-0 z-[-1]"
         )}
       />
-      <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8"> {/* Adjusted space-y for tighter mobile spacing */}
+      <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+        {" "}
+        {/* Adjusted space-y for tighter mobile spacing */}
         {/* Top container */}
         <div className="space-y-4">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold"> {/* Reduced xl size to prevent excessive bigness */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
+            {" "}
+            {/* Reduced xl size to prevent excessive bigness */}
             Welcome to <span className="">Vesper</span>
             <br />
             Your social media workspace
           </h1>
         </div>
-
         {/* Middle container */}
         <div className="space-y-4">
-          <p className="text-sm sm:text-base max-w-2xl mx-auto"> {/* Added sm: for better small-screen readability */}
+          <p className="text-sm sm:text-base max-w-2xl mx-auto">
+            {" "}
+            {/* Added sm: for better small-screen readability */}
             Your all-in-one social media management tool.
           </p>
         </div>
-
         {/* Bottom container - Email signup */}
         <div className="max-w-md mx-auto">
           <Form {...form}>
@@ -75,7 +81,9 @@ const HeroSection = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <div className="flex items-center bg-white rounded-full shadow-lg overflow-hidden border border-primary-500 space-x-2 sm:space-x-3 p-1"> {/* Adjusted space-x for mobile */}
+                      <div className="flex items-center bg-white rounded-full shadow-lg overflow-hidden border border-primary-500 space-x-2 sm:space-x-3 p-1">
+                        {" "}
+                        {/* Adjusted space-x for mobile */}
                         <Input
                           placeholder="Enter your email address"
                           className="flex-1 h-12 sm:h-14 px-4 border-none bg-transparent text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-0 text-sm sm:text-base rounded-full"
