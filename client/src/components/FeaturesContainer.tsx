@@ -3,15 +3,26 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Check } from "lucide-react";
 
-const FeaturesContainer = () => {
+interface FeaturesContainerProps {
+  title?: string;
+  heading?: string;
+  description?: string;
+  imageUrl?: string;
+}
+const FeaturesContainer = ({
+  title,
+  heading,
+  description,
+  imageUrl,
+}: FeaturesContainerProps) => {
   return (
-    <section className="w-full py-16">
+    <section className="w-full py-16 ">
       <div className="max-w-7xl mx-auto px-6">
-        <Card className="bg-[var(--vibrant-blue-200)] border-0 shadow-lg rounded-2xl p-8 md:p-12">
+        <Card className="bg-[var(--vibrant-blue-200)] border-0 shadow-lg rounded-2xl p-8 md:p-12 group h-screen">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Image */}
             <div className="order-2 lg:order-1">
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden  group-hover:scale-[103%] transition-transform duration-400 ease-in-out">
                 <Image
                   src="/publish.webp"
                   alt="Social Media Dashboard"
