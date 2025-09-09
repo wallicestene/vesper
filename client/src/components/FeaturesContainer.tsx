@@ -17,16 +17,42 @@ const FeaturesContainer = ({
   imageUrl,
   moreInfo,
 }: FeaturesContainerProps) => {
+  const getBackgroundColor = (title: string | undefined) => {
+    const colorMap: { [key: string]: string } = {
+      Publish: "bg-[var(--vibrant-blue-200)]",
+      "Content Library": "bg-[var(--vibrant-teal-200)]",
+      Analytics: "bg-[var(--vibrant-pink-200)]",
+      Collaboration: "bg-[var(--vibrant-purple-200)]",
+      Engage: "bg-[var(--vibrant-orange-200)]",
+    };
+
+    return colorMap[title || ""] || "bg-[var(--vibrant-blue-200)]";
+  };
+  const getTitleColor = (title: string | undefined) => {
+    const colorMap: { [key: string]: string } = {
+      Publish: "text-[var(--vibrant-blue-600)]",
+      "Content Library": "text-[var(--vibrant-teal-600)]",
+      Analytics: "text-[var(--vibrant-pink-600)]",
+      Collaboration: "text-[var(--vibrant-purple-600)]",
+      Engage: "text-[var(--vibrant-orange-600)]",
+    };
+
+    return colorMap[title || ""] || "text-[var(--vibrant-blue-600)]";
+  };
   return (
-    <section className="w-full py-8 sm:py-12 md:py-16">
+    <section className="w-full">
       <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8">
-        <Card className="bg-[var(--vibrant-blue-200)] border-0 shadow-lg rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 group min-h-[80vh]">
+        <Card
+          className={`${getBackgroundColor(
+            title
+          )} border-0 shadow-lg rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 group min-h-[90vh]`}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
             {/* Left side - Image */}
             <div className="order-2 lg:order-1">
               <div className="relative overflow-hidden rounded-lg sm:rounded-xl group-hover:scale-[102%] sm:group-hover:scale-[103%] transition-transform duration-300 sm:duration-400 ease-in-out">
                 <Image
-                  src="/publish.webp"
+                  src={imageUrl || "/publish.webp"}
                   alt="Social Media Dashboard"
                   width={600}
                   height={400}
@@ -38,7 +64,11 @@ const FeaturesContainer = ({
             {/* Right side - Content */}
             <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
               <div className="space-y-4">
-                <p className="text-vibrant-blue-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">
+                <p
+                  className={`${getTitleColor(
+                    title
+                  )} font-semibold text-xs sm:text-sm uppercase tracking-wider`}
+                >
                   {title}
                 </p>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary-950 leading-tight">

@@ -27,11 +27,11 @@ export default function Page() {
       ],
     },
     {
-      title: "content Library",
+      title: "Content Library",
       heading: "Organize Your Media Assets",
       description:
         "Store and manage your images, videos, and other media assets in one centralized content library. Easily access and reuse your content for future posts.",
-      imageUrl: "/content-library.webp",
+      imageUrl: "/create-large.webp",
       moreInfo: [
         "Centralized media storage",
         "Tagging and categorization",
@@ -43,7 +43,7 @@ export default function Page() {
       heading: "Track Performance and Engagement",
       description:
         "Gain insights into your social media performance with detailed analytics and reports. Monitor engagement metrics, follower growth, and post reach to optimize your strategy.",
-      imageUrl: "/analytics.webp",
+      imageUrl: "/analyze-large.webp",
       moreInfo: [
         "Engagement metrics",
         "Follower growth tracking",
@@ -55,14 +55,14 @@ export default function Page() {
       heading: "Team Collaboration Made Simple",
       description:
         "Collaborate with your team members seamlessly. Assign roles, share content, and streamline your social media workflow for better productivity.",
-      imageUrl: "/collaboration.webp",
+      imageUrl: "/collaborate-large.webp",
     },
     {
       title: "Engage",
       heading: "Engage with Your Audience",
       description:
         "Manage and respond to comments, messages, and mentions from a single inbox. Stay connected with your audience and build meaningful relationships.",
-      imageUrl: "/engage.webp",
+      imageUrl: "/engage-large.webp",
     },
   ];
   return (
@@ -70,16 +70,18 @@ export default function Page() {
       <Navbar />
       <HeroSection />
       <MetricsContainer />
-      {featuresData.map((feature) => (
-        <FeaturesContainer
-          key={feature.title}
-          title={feature.title}
-          heading={feature.heading}
-          description={feature.description}
-          imageUrl={feature.imageUrl}
-          moreInfo={feature.moreInfo}
-        />
-      ))}
+      <div className="space-y-10">
+        {featuresData.map((feature) => (
+          <FeaturesContainer
+            key={feature.title}
+            title={feature.title}
+            heading={feature.heading}
+            description={feature.description}
+            imageUrl={feature.imageUrl}
+            moreInfo={feature.moreInfo}
+          />
+        ))}
+      </div>
     </div>
   );
 }
