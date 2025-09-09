@@ -11,6 +11,7 @@ export default function Page() {
     heading: string;
     description: string;
     imageUrl: string;
+    moreInfo?: string[];
   }
   const featuresData: featuresContainer[] = [
     {
@@ -19,6 +20,11 @@ export default function Page() {
       description:
         "Schedule and publish posts across multiple social media platforms with ease. Plan your content calendar and maintain a consistent online presence.",
       imageUrl: "/publish.webp",
+      moreInfo: [
+        "Multi-platform scheduling",
+        "Content calendar view",
+        "Automated posting",
+      ],
     },
     {
       title: "content Library",
@@ -26,6 +32,11 @@ export default function Page() {
       description:
         "Store and manage your images, videos, and other media assets in one centralized content library. Easily access and reuse your content for future posts.",
       imageUrl: "/content-library.webp",
+      moreInfo: [
+        "Centralized media storage",
+        "Tagging and categorization",
+        "Easy search and retrieval",
+      ],
     },
     {
       title: "Analytics",
@@ -33,6 +44,11 @@ export default function Page() {
       description:
         "Gain insights into your social media performance with detailed analytics and reports. Monitor engagement metrics, follower growth, and post reach to optimize your strategy.",
       imageUrl: "/analytics.webp",
+      moreInfo: [
+        "Engagement metrics",
+        "Follower growth tracking",
+        "Post reach analysis",
+      ],
     },
     {
       title: "Collaboration",
@@ -61,6 +77,7 @@ export default function Page() {
           heading={feature.heading}
           description={feature.description}
           imageUrl={feature.imageUrl}
+          moreInfo={feature.moreInfo}
         />
       ))}
     </div>
