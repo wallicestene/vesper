@@ -20,7 +20,7 @@ const FeaturesContainer = ({
   const getBackgroundColor = (title: string | undefined) => {
     const colorMap: { [key: string]: string } = {
       Publish: "bg-[var(--vibrant-blue-200)]",
-      "Content Library": "bg-[var(--vibrant-teal-200)]",
+      "Content Library": "bg-[var(--vibrant-green-200)]",
       Analytics: "bg-[var(--vibrant-pink-200)]",
       Collaboration: "bg-[var(--vibrant-purple-200)]",
       Engage: "bg-[var(--vibrant-orange-200)]",
@@ -31,7 +31,7 @@ const FeaturesContainer = ({
   const getTitleColor = (title: string | undefined) => {
     const colorMap: { [key: string]: string } = {
       Publish: "text-[var(--vibrant-blue-600)]",
-      "Content Library": "text-[var(--vibrant-teal-600)]",
+      "Content Library": "text-[var(--vibrant-green-600)]",
       Analytics: "text-[var(--vibrant-pink-600)]",
       Collaboration: "text-[var(--vibrant-purple-600)]",
       Engage: "text-[var(--vibrant-orange-600)]",
@@ -49,7 +49,11 @@ const FeaturesContainer = ({
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
             {/* Left side - Image */}
-            <div className="order-2 lg:order-1">
+            <div
+              className={`order-2 ${
+                title === "Content Library" ? " lg:order-2" : "lg:order-1 "
+              }`}
+            >
               <div className="relative overflow-hidden rounded-lg sm:rounded-xl group-hover:scale-[102%] sm:group-hover:scale-[103%] transition-transform duration-300 sm:duration-400 ease-in-out">
                 <Image
                   src={imageUrl || "/publish.webp"}
@@ -62,7 +66,11 @@ const FeaturesContainer = ({
             </div>
 
             {/* Right side - Content */}
-            <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
+            <div
+              className={`order-1 space-y-4 sm:space-y-6 ${
+                title === "Content Library" ? " lg:order-1 " : "lg:order-2"
+              }`}
+            >
               <div className="space-y-4">
                 <p
                   className={`${getTitleColor(
