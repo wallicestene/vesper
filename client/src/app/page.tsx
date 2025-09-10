@@ -39,18 +39,6 @@ export default function Page() {
       ],
     },
     {
-      title: "Analytics",
-      heading: "Track Performance and Engagement",
-      description:
-        "Gain insights into your social media performance with detailed analytics and reports. Monitor engagement metrics, follower growth, and post reach to optimize your strategy.",
-      imageUrl: "/analyze-large.webp",
-      moreInfo: [
-        "Engagement metrics",
-        "Follower growth tracking",
-        "Post reach analysis",
-      ],
-    },
-    {
       title: "Collaboration",
       heading: "Team Collaboration Made Simple",
       description:
@@ -64,14 +52,65 @@ export default function Page() {
         "Manage and respond to comments, messages, and mentions from a single inbox. Stay connected with your audience and build meaningful relationships.",
       imageUrl: "/engage-large.webp",
     },
+    {
+      title: "Analytics",
+      heading: "Track Performance and Engagement",
+      description:
+        "Gain insights into your social media performance with detailed analytics and reports. Monitor engagement metrics, follower growth, and post reach to optimize your strategy.",
+      imageUrl: "/analyze-large.webp",
+      moreInfo: [
+        "Engagement metrics",
+        "Follower growth tracking",
+        "Post reach analysis",
+      ],
+    },
   ];
+
+  // Split features for different layouts
+  const singleFeatures = featuresData.filter(
+    (feature) => !["Collaboration", "Engage"].includes(feature.title)
+  );
+  const sideBySideFeatures = featuresData.filter((feature) =>
+    ["Collaboration", "Engage"].includes(feature.title)
+  );
+
   return (
     <div className="">
       <Navbar />
       <HeroSection />
       <MetricsContainer />
-      <div className="space-y-10">
-        {featuresData.map((feature) => (
+      <div className="space-y-7">
+        {/* Render Publish and Content Library */}
+        {singleFeatures.slice(0, 2).map((feature) => (
+          <FeaturesContainer
+            key={feature.title}
+            title={feature.title}
+            heading={feature.heading}
+            description={feature.description}
+            imageUrl={feature.imageUrl}
+            moreInfo={feature.moreInfo}
+          />
+        ))}
+
+        {/* Side by side section  */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 ">
+            {sideBySideFeatures.map((feature) => (
+              <div key={feature.title} className="w-full">
+                <FeaturesContainer
+                  title={feature.title}
+                  heading={feature.heading}
+                  description={feature.description}
+                  imageUrl={feature.imageUrl}
+                  moreInfo={feature.moreInfo}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Render Analytics */}
+        {singleFeatures.slice(2).map((feature) => (
           <FeaturesContainer
             key={feature.title}
             title={feature.title}

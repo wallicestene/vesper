@@ -10,7 +10,7 @@ const MetricsContainer = () => {
             <div className="space-y-4">
               <NumberTicker
                 value={70000}
-                startValue={1}
+                startValue={1000}
                 className="whitespace-pre-wrap text-4xl font-bold tracking-wide text-secondary-900"
               />
               <p className="text-gray-600 font-medium text-sm uppercase tracking-wider">
@@ -23,7 +23,7 @@ const MetricsContainer = () => {
             <div className="space-y-4">
               <NumberTicker
                 value={12434035}
-                startValue={1}
+                startValue={1000000}
                 className="whitespace-pre-wrap text-4xl font-bold tracking-wide text-secondary-900"
               />
               <p className="text-gray-600 font-medium text-sm uppercase tracking-wider">
