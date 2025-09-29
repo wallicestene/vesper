@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Vesper",
-  // this a project for scheduling post and engagement analytics
+  // this a project for scheduling posts and engagement analytics
   keywords: ["Vesper", "scheduling", "posts", "analytics"],
   description: "A project for scheduling posts and engagement analytics.",
 };
