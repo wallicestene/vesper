@@ -77,7 +77,7 @@ const HeroSection = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <div className="flex items-center bg-white rounded-full shadow-lg overflow-hidden border border-primary-500 space-x-2 sm:space-x-3 p-1">
+                      <div className="flex items-center bg-white rounded-full shadow-lg overflow-hidden border border-primary-500 md:space-x-2 lg:space-x-3 p-1">
                         {" "}
                         <Input
                           placeholder="Enter your email address"
