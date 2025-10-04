@@ -15,6 +15,9 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { Card } from "./ui/card";
 import { signUp, signIn, useSession } from "@/lib/auth-client";
+import { useState } from "react";
+// import { useRouter } from "next/router";
+import { AlertCircle, CheckCircle, Loader, Loader2 } from "lucide-react";
 
 const FormSchema = z.object({
   email: z.string().email({
@@ -26,6 +29,12 @@ const FormSchema = z.object({
 });
 
 const SignupForm = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean>(null);
+
+  //   const router = useRouter();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -35,10 +44,8 @@ const SignupForm = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
-    // console.log(data);
-    // Todo: Handle form submission here
     try {
-      const { data: user, error } = await signUp.email(
+      await signUp.email(
         {
           name: "New User",
           email: data.email,
@@ -47,21 +54,30 @@ const SignupForm = () => {
         {
           onRequest: (ctx) => {
             // show loading spinner
-            <div>Loading...</div>;
+            setLoading(true);
+            setError(null);
+            setSuccess(false);
           },
           onSuccess: (ctx) => {
             // redirect to dashboard or sign in
-            alert("Sign up successful! Please log in.");
+            setLoading(false);
+            setSuccess(true);
+            setError(null);
+            // router.push("/dashboard");
           },
           onError: (ctx) => {
-            // show error message
-            alert(`Error: ${ctx.error.message}`);
+            //handle error
+            setLoading(false);
+            setSuccess(false);
+            setError(ctx.error.message);
           },
         }
       );
-      console.log(user, error);
     } catch (error) {
-      //   console.error("Error during sign up:", error);
+      console.error("Signup error:", error);
+      setLoading(false);
+      setSuccess(false);
+      setError("An unexpected error occurred. Please try again.");
     }
   };
 
@@ -90,6 +106,24 @@ const SignupForm = () => {
                 Let&apos;s get you started with your social media workspace
               </p>
             </div>
+
+            {/* Error Alert */}
+            {error && (
+              <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 flex items-center space-x-2">
+                <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
+                <p className="text-sm text-red-700">{error}</p>
+              </div>
+            )}
+
+            {/* Success Alert */}
+            {success && (
+              <div className="mb-4 p-3 rounded-lg bg-green-50 border border-green-200 flex items-center space-x-2">
+                <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                <p className="text-sm text-green-700">
+                  Account created successfully! Redirecting...
+                </p>
+              </div>
+            )}
 
             {/* Form */}
             <Form {...form}>
@@ -140,9 +174,22 @@ const SignupForm = () => {
                 <div className="pt-2">
                   <Button
                     type="submit"
+                    disabled={loading || success}
                     className="w-full h-11 sm:h-12 bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm sm:text-base rounded-lg transition-colors duration-200 hover:cursor-pointer"
                   >
-                    Create Account
+                    {loading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" /> Creating
+                        Account...
+                      </>
+                    ) : success ? (
+                      <>
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        Account Created
+                      </>
+                    ) : (
+                      "Create Account"
+                    )}
                   </Button>
                 </div>
               </form>
