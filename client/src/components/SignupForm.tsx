@@ -31,7 +31,7 @@ const FormSchema = z.object({
 const SignupForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<boolean>(null);
+  const [success, setSuccess] = useState<boolean>(false);
 
   //   const router = useRouter();
 
