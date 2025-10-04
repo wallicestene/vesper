@@ -16,7 +16,13 @@ import {
 const app = express();
 
 // middleware setup
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000", 
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // Allow cookies and authentication headers
+  })
+);
 app.use(morgan("dev"));
 
 // Auth routes first

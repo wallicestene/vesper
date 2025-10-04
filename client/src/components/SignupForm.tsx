@@ -14,6 +14,7 @@ import z from "zod";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { Card } from "./ui/card";
+import { signUp, signIn, useSession } from "@/lib/auth-client";
 
 const FormSchema = z.object({
   email: z.string().email({
@@ -33,9 +34,35 @@ const SignupForm = () => {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof FormSchema>) => {
-    console.log(data);
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    // console.log(data);
     // Todo: Handle form submission here
+    try {
+      const { data: user, error } = await signUp.email(
+        {
+          name: "New User",
+          email: data.email,
+          password: data.password,
+        },
+        {
+          onRequest: (ctx) => {
+            // show loading spinner
+            <div>Loading...</div>;
+          },
+          onSuccess: (ctx) => {
+            // redirect to dashboard or sign in
+            alert("Sign up successful! Please log in.");
+          },
+          onError: (ctx) => {
+            // show error message
+            alert(`Error: ${ctx.error.message}`);
+          },
+        }
+      );
+      console.log(user, error);
+    } catch (error) {
+      //   console.error("Error during sign up:", error);
+    }
   };
 
   return (
@@ -60,13 +87,16 @@ const SignupForm = () => {
                 Welcome to Vesper
               </h1>
               <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                Let's get you started with your social media workspace
+                Let&apos;s get you started with your social media workspace
               </p>
             </div>
 
             {/* Form */}
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-4 sm:space-y-5"
+              >
                 <FormField
                   control={form.control}
                   name="email"
@@ -106,11 +136,11 @@ const SignupForm = () => {
                     </FormItem>
                   )}
                 />
-                
+
                 <div className="pt-2">
-                  <Button 
-                    type="submit" 
-                    className="w-full h-11 sm:h-12 bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm sm:text-base rounded-lg transition-colors duration-200"
+                  <Button
+                    type="submit"
+                    className="w-full h-11 sm:h-12 bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm sm:text-base rounded-lg transition-colors duration-200 hover:cursor-pointer"
                   >
                     Create Account
                   </Button>
@@ -122,8 +152,8 @@ const SignupForm = () => {
             <div className="mt-6 sm:mt-8 text-center">
               <p className="text-xs sm:text-sm text-gray-600">
                 Already have an account?{" "}
-                <Link 
-                  href="/login" 
+                <Link
+                  href="/login"
                   className="font-semibold text-primary-600 hover:text-primary-700 transition-colors"
                 >
                   Sign in
@@ -134,11 +164,17 @@ const SignupForm = () => {
             <div className="mt-4 text-center">
               <p className="text-xs text-gray-500 leading-relaxed">
                 By creating an account, you agree to our{" "}
-                <Link href="/terms" className="text-primary-600 hover:text-primary-700">
+                <Link
+                  href="/terms"
+                  className="text-primary-600 hover:text-primary-700"
+                >
                   Terms of Service
                 </Link>{" "}
                 and{" "}
-                <Link href="/privacy" className="text-primary-600 hover:text-primary-700">
+                <Link
+                  href="/privacy"
+                  className="text-primary-600 hover:text-primary-700"
+                >
                   Privacy Policy
                 </Link>
               </p>
