@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -14,18 +15,17 @@ import z from "zod";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { Card } from "./ui/card";
-import { signUp, signIn, useSession } from "@/lib/auth-client";
+import { signIn } from "@/lib/auth-client";
 import { useState } from "react";
 // import { useRouter } from "next/router";
 import {
-  AlertCircle,
   AlertCircleIcon,
   CheckCheckIcon,
   CheckCircle,
-  Loader,
   Loader2,
 } from "lucide-react";
 import { Alert, AlertTitle } from "@/components/ui/alert";
+import { useRouter } from "next/navigation";
 const FormSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
@@ -39,8 +39,7 @@ const LoginForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
-
-  //   const router = useRouter();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -69,7 +68,7 @@ const LoginForm = () => {
             setLoading(false);
             setSuccess(true);
             setError(null);
-            // router.push("/dashboard");
+            router.push("/dashboard");
           },
           onError: (ctx) => {
             //handle error
@@ -80,7 +79,7 @@ const LoginForm = () => {
         }
       );
     } catch (error) {
-      console.error("Signup error:", error);
+      console.error("Login error:", error);
       setLoading(false);
       setSuccess(false);
       setError("An unexpected error occurred. Please try again.");
@@ -89,7 +88,6 @@ const LoginForm = () => {
 
   return (
     <>
-      {/* Main Content */}
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="w-full max-w-md">
           <Card className="bg-white shadow-lg border-0 rounded-2xl p-6 sm:p-8">
@@ -190,9 +188,15 @@ const LoginForm = () => {
             </Form>
 
             {/* Footer Links */}
-            <div className="mt-6 sm:mt-8 text-center">
+            <div className="mt-6 sm:mt-8 text-center space-y-3">
+              <Link
+                href="/forgot-password"
+                className="text-xs sm:text-sm text-primary-600 hover:text-primary-700 transition-colors"
+              >
+                Forgot your password?
+              </Link>
               <p className="text-xs sm:text-sm text-gray-600">
-                Already have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <Link
                   href="/signup"
                   className="font-semibold text-primary-600 hover:text-primary-700 transition-colors"

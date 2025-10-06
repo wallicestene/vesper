@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -14,18 +15,16 @@ import z from "zod";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { Card } from "./ui/card";
-import { signUp, signIn, useSession } from "@/lib/auth-client";
+import { signUp } from "@/lib/auth-client";
 import { useState } from "react";
-// import { useRouter } from "next/router";
 import {
-  AlertCircle,
   AlertCircleIcon,
   CheckCheckIcon,
   CheckCircle,
-  Loader,
   Loader2,
 } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertTitle } from "@/components/ui/alert";
+import { useRouter } from "next/navigation";
 const FormSchema = z.object({
   name: z.string().min(4, {
     message: "Name must be at least 4 characters long.",
@@ -43,7 +42,7 @@ const SignupForm = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
 
-  //   const router = useRouter();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -74,7 +73,7 @@ const SignupForm = () => {
             setLoading(false);
             setSuccess(true);
             setError(null);
-            // router.push("/dashboard");
+            router.push("/dashboard");
           },
           onError: (ctx) => {
             //handle error
@@ -147,6 +146,7 @@ const SignupForm = () => {
                           {...field}
                         />
                       </FormControl>
+                      <FormMessage className="text-xs sm:text-sm" />
                     </FormItem>
                   )}
                 />
