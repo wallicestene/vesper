@@ -17,9 +17,19 @@ import { Card } from "./ui/card";
 import { signUp, signIn, useSession } from "@/lib/auth-client";
 import { useState } from "react";
 // import { useRouter } from "next/router";
-import { AlertCircle, CheckCircle, Loader, Loader2 } from "lucide-react";
-
+import {
+  AlertCircle,
+  AlertCircleIcon,
+  CheckCheckIcon,
+  CheckCircle,
+  Loader,
+  Loader2,
+} from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 const FormSchema = z.object({
+  name: z.string().min(4, {
+    message: "Name must be at least 4 characters long.",
+  }),
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
@@ -38,6 +48,7 @@ const SignupForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
@@ -47,7 +58,7 @@ const SignupForm = () => {
     try {
       await signUp.email(
         {
-          name: "",
+          name: data.name,
           email: data.email,
           password: data.password,
         },
@@ -99,20 +110,20 @@ const SignupForm = () => {
 
             {/* Error Alert */}
             {error && (
-              <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 flex items-center space-x-2">
-                <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
-                <p className="text-sm text-red-700">{error}</p>
-              </div>
+              <Alert variant={"destructive"}>
+                <AlertCircleIcon />
+                <AlertTitle>{error}</AlertTitle>
+              </Alert>
             )}
 
             {/* Success Alert */}
             {success && (
-              <div className="mb-4 p-3 rounded-lg bg-green-50 border border-green-200 flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                <p className="text-sm text-green-700">
+              <Alert variant={"default"}>
+                <CheckCheckIcon />
+                <AlertTitle>
                   Account created successfully! Redirecting...
-                </p>
-              </div>
+                </AlertTitle>
+              </Alert>
             )}
 
             {/* Form */}
@@ -121,6 +132,24 @@ const SignupForm = () => {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-4 sm:space-y-5"
               >
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm font-semibold text-primary-800">
+                        Name
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Enter your name"
+                          className="h-11 sm:h-12 rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500 text-sm sm:text-base"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
                 <FormField
                   control={form.control}
                   name="email"
@@ -193,7 +222,7 @@ const SignupForm = () => {
                   href="/login"
                   className="font-semibold text-primary-600 hover:text-primary-700 transition-colors"
                 >
-                  Sign in
+                  Log in
                 </Link>
               </p>
             </div>
