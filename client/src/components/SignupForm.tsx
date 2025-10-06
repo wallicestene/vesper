@@ -47,7 +47,7 @@ const SignupForm = () => {
     try {
       await signUp.email(
         {
-          name: "New User",
+          name: "",
           email: data.email,
           password: data.password,
         },
@@ -82,17 +82,7 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Header */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-        <Link
-          href="/"
-          className="text-2xl sm:text-3xl font-bold text-primary-800 hover:text-primary-600 transition-colors tracking-tight inline-block"
-        >
-          Vesper
-        </Link>
-      </div>
-
+    <>
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="w-full max-w-md">
@@ -229,7 +219,7 @@ const SignupForm = () => {
           </Card>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
