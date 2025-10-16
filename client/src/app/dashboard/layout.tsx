@@ -13,10 +13,6 @@ export default function DashboardLayout({
   }
 
   const navLinks: NavLink[] = [
-    // {
-    //   title: "Home",
-    //   href: "/dashboard",
-    // },
     {
       title: "Publish",
       href: "/dashboard/publish",
@@ -38,10 +34,11 @@ export default function DashboardLayout({
       href: "/dashboard/collaborate",
     },
   ];
+  
   return (
     <div className="flex flex-col h-screen">
-      {/* Navbar */}
-      <nav className="w-full border-b bg-background px-4 md:px-6 flex items-center justify-between z-50 relative sticky top-0">
+      {/* Navbar - Fixed at top with highest z-index */}
+      <nav className="w-full border-b bg-background px-4 md:px-6 flex items-center justify-between z-50">
         <div className="flex items-center space-x-6 md:space-x-8 overflow-x-auto">
           <Link
             href="/dashboard"
@@ -65,8 +62,9 @@ export default function DashboardLayout({
           </ul>
         </div>
       </nav>
+      
       {/* Sidebar and main content container */}
-      <div className="flex flex-1 overflow-hidden relative z-10">
+      <div className="flex flex-1 overflow-hidden">
         <SidebarProvider>
           <AppSidebar />
           <main className="flex-1 overflow-auto">
